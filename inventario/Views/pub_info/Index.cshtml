@@ -1,0 +1,47 @@
+﻿@model IEnumerable<inventario.Models.pub_info>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.logo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pr_info)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publisher.pub_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="data:image/png;base64,@Convert.ToBase64String(item.logo,78,item.logo.Length-78 ,
+          Base64FormattingOptions.None)"
+                 alt="Image" /> 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pr_info)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.publisher.pub_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.pub_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.pub_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.pub_id })
+        </td>
+    </tr>
+}
+
+</table>

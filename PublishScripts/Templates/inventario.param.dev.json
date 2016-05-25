@@ -1,0 +1,32 @@
+{
+  "siteName": {
+    "value": "multiplataforma-inventario"
+  },
+  "hostingPlanName": {
+    "value": "multiplataforma"
+  },
+  "siteLocation": {
+    "value": "West US"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "serverName": {
+    "value": "multiplataforma"
+  },
+  "serverLocation": {
+    "value": "South Central US"
+  },
+  "administratorLogin": {
+    "value": "alexescg"
+  },
+  "administratorLoginPassword": {
+    "value": "Abcd1234"
+  },
+  "databaseName": {
+    "value": "multiplataforma-inventario_db"
+  }
+}
