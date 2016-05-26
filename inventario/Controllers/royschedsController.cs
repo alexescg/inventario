@@ -24,7 +24,7 @@ namespace inventario.Controllers
         // GET: royscheds/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
+            if (id == null) 
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

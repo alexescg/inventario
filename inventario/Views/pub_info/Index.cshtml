@@ -20,14 +20,12 @@
         <th>
             @Html.DisplayNameFor(model => model.publisher.pub_name)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            <img src="data:image/png;base64,@Convert.ToBase64String(item.logo,78,item.logo.Length-78 ,
-          Base64FormattingOptions.None)"
+            <img src="data:image/png;base64,@(item.ByteToBase64())"
                  alt="Image" /> 
         </td>
         <td>
@@ -36,11 +34,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.publisher.pub_name)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pub_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pub_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pub_id })
-        </td>
+
     </tr>
 }
 

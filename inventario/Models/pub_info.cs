@@ -17,6 +17,11 @@ namespace inventario.Models
         public string pub_id { get; set; }
         public byte[] logo { get; set; }
         public string pr_info { get; set; }
+
+        public String ByteToBase64()
+        {
+            return Convert.ToBase64String(logo);
+        }
     
         public virtual publisher publisher { get; set; }
     }

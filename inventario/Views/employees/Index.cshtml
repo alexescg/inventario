@@ -55,8 +55,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.job_lvl)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hire_date)
+        <td>@{
+            string formattedDate = item.hire_date.ToShortDateString();
+        }
+            @Html.DisplayFor(modelItem => formattedDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.job.job_desc)
