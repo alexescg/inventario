@@ -15,9 +15,15 @@ namespace inventario.Controllers
         private pubsEntities db = new pubsEntities();
 
         // GET: authors
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.authors.ToList());
+
+             var authors = db.authors.AsQueryable();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                authors = authors.Where(a => a.au_fname.Contains(searchString) || a.au_lname.Contains(searchString));
+            }
+            return View(authors.ToList());
         }
 
         // GET: authors/Details/5

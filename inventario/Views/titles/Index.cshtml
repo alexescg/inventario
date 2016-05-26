@@ -9,10 +9,17 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm())
+{
+       <p>
+        Find by Title: @Html.TextBox("SearchString")
+        <input type="submit" value="Buscar por nombres o apellido" />
+       </p>
+}
 <table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.title1)
+            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.TitleSortParm })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.type)

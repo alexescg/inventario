@@ -15,9 +15,14 @@ namespace inventario.Controllers
         private pubsEntities db = new pubsEntities();
 
         // GET: employees
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+
             var employees = db.employees.Include(e => e.job).Include(e => e.publisher);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                employees = employees.Where(s => s.lname.Contains(searchString) || s.fname.Contains(searchString));
+            }
             return View(employees.ToList());
         }
 

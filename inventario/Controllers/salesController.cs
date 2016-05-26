@@ -22,13 +22,10 @@ namespace inventario.Controllers
         }
 
         // GET: sales/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(string stor_id, string ord_num, string title_id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            sale sale = db.sales.Find(id);
+            
+            sale sale = db.sales.Find(stor_id, ord_num, title_id);
             if (sale == null)
             {
                 return HttpNotFound();
@@ -64,13 +61,10 @@ namespace inventario.Controllers
         }
 
         // GET: sales/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string stor_id, string ord_num, string title_id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            sale sale = db.sales.Find(id);
+           
+            sale sale = db.sales.Find(stor_id, ord_num, title_id);
             if (sale == null)
             {
                 return HttpNotFound();
@@ -99,13 +93,9 @@ namespace inventario.Controllers
         }
 
         // GET: sales/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string stor_id, string ord_num, string title_id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            sale sale = db.sales.Find(id);
+            sale sale = db.sales.Find(stor_id, ord_num, title_id);
             if (sale == null)
             {
                 return HttpNotFound();
@@ -116,9 +106,9 @@ namespace inventario.Controllers
         // POST: sales/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(string stor_id, string ord_num, string title_id)
         {
-            sale sale = db.sales.Find(id);
+            sale sale = db.sales.Find(stor_id, ord_num, title_id);
             db.sales.Remove(sale);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -14,10 +14,29 @@ namespace inventario.Controllers
     {
         private pubsEntities db = new pubsEntities();
 
+
+
         // GET: titles
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
+            ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+
             var titles = db.titles.Include(t => t.publisher).Include(t => t.roysched);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                titles = titles.Where(s => s.title1.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    titles = titles.OrderByDescending(t => t.title1);
+                break;
+
+                default:
+                    titles = titles.OrderBy(t => t.title1);
+                break;
+            }
+
             return View(titles.ToList());
         }
 

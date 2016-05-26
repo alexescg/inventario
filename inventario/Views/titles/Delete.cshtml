@@ -93,7 +93,7 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm(new { clubid = @Viewbag.Club.id })) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
